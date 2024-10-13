@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hypermint: The Ultimate Meme Coin Platform on Stellar
 
-## Getting Started
+![Hypermint Logo](link-to-your-logo.png)
 
-First, run the development server:
+Hypermint is a revolutionary web platform that empowers users to create, trade, and discuss meme coins on the Stellar blockchain. It's where creativity meets cryptocurrency, allowing anyone to participate in the exciting world of meme-based digital assets.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Table of Contents
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Demo](#demo)
+- [Features](#features)
+- [Architecture](#architecture)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Demo
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Video Walkthrough
+[Insert your demo video here. You can use a GIF or link to a YouTube video]
 
-## Learn More
+![Demo GIF](link-to-your-demo-gif.gif)
 
-To learn more about Next.js, take a look at the following resources:
+### Screenshots
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<table>
+  <tr>
+    <td><img src="link-to-screenshot1.png" alt="Meme Coin Creation" width="300"/></td>
+    <td><img src="link-to-screenshot2.png" alt="Trading Interface" width="300"/></td>
+    <td><img src="link-to-screenshot3.png" alt="Community Chat" width="300"/></td>
+  </tr>
+  <tr>
+    <td align="center"><em>Meme Coin Creation</em></td>
+    <td align="center"><em>Trading Interface</em></td>
+    <td align="center"><em>Community Chat</em></td>
+  </tr>
+</table>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Project Explanation Video
 
-## Deploy on Vercel
+[![Hypermint Explanation Video](link-to-video-thumbnail.png)](https://www.loom.com/share/your-loom-video-id)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Click on the image above to watch a detailed explanation of how Hypermint works, the structure of the GitHub repository, and a comprehensive demo of all features.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Features
+
+- 🪙 **Meme Coin Creation**: Design and launch your own meme-inspired cryptocurrencies with ease.
+- 💱 **Trading Platform**: Buy, sell, and exchange meme coins in a user-friendly marketplace.
+- 💬 **Community Chat**: Engage in discussions, share memes, and build a community around your favorite coins.
+- 🌟 **Stellar Blockchain Integration**: Leverage the speed, security, and low fees of the Stellar network.
+- 📊 **Real-time Market Data**: Stay updated with live price charts and trading volumes.
+
+
+## Architecture
+
+Hypermint is built on a modern, scalable architecture:
+
+- **Frontend**: React.js with Next.js for server-side rendering
+- **Backend**: Node.js with Express
+- **Blockchain**: Stellar SDK for meme coin creation and transactions
+- **Database**: MongoDB for user data and off-chain information
+- **Real-time Updates**: Socket.io for live chat and price updates
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Acknowledgements
+
+- [Stellar](https://www.stellar.org/) for providing the blockchain infrastructure
+- [React](https://reactjs.org/) and [Next.js](https://nextjs.org/) for powering our frontend
+- [Node.js](https://nodejs.org/) and [Express](https://expressjs.com/) for our robust backend
+- All the meme creators and crypto enthusiasts who inspire us daily!
