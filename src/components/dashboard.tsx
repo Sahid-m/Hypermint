@@ -33,12 +33,12 @@ export function DashboardComponent() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { id: 1, name: "CryptoKitty", image: "" },
-              { id: 2, name: "Bored Ape", image: "" },
-              { id: 3, name: "Punk", image: "" },
-              { id: 4, name: "Azuki", image: "" },
-              { id: 5, name: "Doodle", image: "" },
-              { id: 6, name: "Cool Cat", image: "" },
+              { id: 1, name: "CryptoKitty", image: "https://robohash.org/$1?set=set2&size=180x180" },
+              { id: 2, name: "Bored Ape", image: "https://robohash.org/$2?set=set2&size=180x180" },
+              { id: 3, name: "Punk", image: "https://robohash.org/$3?set=set2&size=180x180" },
+              { id: 4, name: "Azuki", image: "https://robohash.org/$4?set=set2&size=180x180" },
+              { id: 5, name: "Doodle", image: "https://robohash.org/$5?set=set2&size=180x180" },
+              { id: 6, name: "Cool Cat", image: "https://robohash.org/6?set=set2&size=180x180" },
             ].map((token) => (
               <div key={token.id} className="bg-gray-800/50 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300 ease-in-out transform hover:scale-105">
                 <div className="pt-4 px-4">
