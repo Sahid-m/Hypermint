@@ -1,6 +1,26 @@
+
+<p align="center">
+<br />
+    <img src="https://github.com/user-attachments/assets/a3467aea-5ae6-40c5-a0ce-4bcb1311efc4" width="250" alt="Hypermint Logo" style="border-radius: 20px;"/>
+<br />
+</p>
+<p align="center"><strong style="font-size: 24px;">The Ultimate Meme Coin Platform on Stellar</strong></p>
+<p align="center" style="display: flex; justify-content: center; align-items: center;">
+    <span style="display: inline-flex; align-items: center; background-color: #1c1c1c; padding: 5px; border-radius: 6px;">
+        <img src="https://img.shields.io/github/stars/Ibad-10/Hypermint?style=social" alt="GitHub stars"/>
+        <span style="margin: 0 10px; color: white; font-size: 14px;"></span>
+        <a href="https://www.stellar.org/">
+            <img src="https://img.shields.io/badge/Powered%20by-Stellar-brightgreen" alt="Powered by Stellar" style="height: 21px;"/>
+        </a>
+    </span>
+</p>
+
+
 # Hypermint: The Ultimate Meme Coin Platform on Stellar
 
-![Hypermint Logo](![logo-no-background](https://github.com/user-attachments/assets/ba03712c-c216-4ab2-8174-2d0bb4b99d2c))
+
+
+
 
 Hypermint is a revolutionary web platform that empowers users to create, trade, and discuss meme coins on the Stellar blockchain. It's where creativity meets cryptocurrency, allowing anyone to participate in the exciting world of meme-based digital assets.
 
