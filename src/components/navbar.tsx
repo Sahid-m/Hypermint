@@ -32,6 +32,7 @@ export default function Navigation(){
         <div className="hidden md:flex space-x-6">
           <NavLink href="/">Home</NavLink>
           <NavLink href="/aboutus">About Us</NavLink>
+          <NavLink href="/recenttoken">Recent Token</NavLink>
         </div>
 
         <button className="hidden md:flex items-center bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-opacity-50">
@@ -51,6 +52,7 @@ export default function Navigation(){
             <div className="flex flex-col space-y-4">
               <NavLink href="/" onClick={() => setIsMenuOpen(false)}>Home</NavLink>
               <NavLink href="/aboutus" onClick={() => setIsMenuOpen(false)}>About Us</NavLink>
+              <NavLink href="/recenttoken" onClick={() => setIsMenuOpen(false)}>About Us</NavLink>
               <button className="flex items-center justify-center bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-opacity-50">
                 <Wallet className="mr-2" size={18} />
                 Connect Wallet

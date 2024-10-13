@@ -56,10 +56,10 @@ export function DashboardComponent() {
                   <h3 className="text-lg font-semibold mb-2">{token.name} #{token.id}</h3>
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-2 sm:space-y-0">
                     <span className="text-violet-400 font-medium">1000 HYPR</span>
-                    <button className="w-full sm:w-auto bg-gradient-to-r from-violet-500 to-blue-500 hover:from-violet-600 hover:to-blue-600 text-white text-sm font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-opacity-50 flex items-center justify-center">
+                    <Link href='/trade' className="w-full sm:w-auto bg-gradient-to-r from-violet-500 to-blue-500 hover:from-violet-600 hover:to-blue-600 text-white text-sm font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-opacity-50 flex items-center justify-center">
                       <Sparkles className="mr-1" size={16} />
                       Trade
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
