@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent, FormEvent } from 'react'
 import { motion } from 'framer-motion'
-import { Loader2, HelpCircle, RefreshCw, ChevronRight, ChevronLeft } from 'lucide-react'
+import { Loader2, RefreshCw, ChevronRight, ChevronLeft } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -15,9 +15,26 @@ import {
 
 const memeWords = ['Doge', 'Moon', 'Rocket', 'Diamond', 'Hands', 'Ape', 'HODL', 'Lambo', 'Tendies', 'Stonks']
 
-const MemeTokenCreatorComponent = () => {
-  const [step, setStep] = useState(1)
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  ticker: string;
+  description: string;
+  image: string | null;
+  twitter: string;
+  telegram: string;
+  website: string;
+}
+
+interface Errors {
+  name?: string;
+  ticker?: string;
+  description?: string;
+  image?: string;
+}
+
+const MemeTokenCreatorComponent: React.FC = () => {
+  const [step, setStep] = useState<number>(1)
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     ticker: '',
     description: '',
@@ -26,16 +43,16 @@ const MemeTokenCreatorComponent = () => {
     telegram: '',
     website: ''
   })
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState<Errors>({})
 
-  const handleInputChange = (e:any) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
     setErrors(prev => ({ ...prev, [name]: '' }))
   }
 
-  const handleImageChange = (e:any) => {
-    const file = e.target.files[0]
+  const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
     if (file) {
       setFormData(prev => ({ ...prev, image: URL.createObjectURL(file) }))
       setErrors(prev => ({ ...prev, image: '' }))
@@ -53,19 +70,43 @@ const MemeTokenCreatorComponent = () => {
     setFormData(prev => ({ ...prev, ticker }))
   }
 
-  const validateForm = () => {
-    const newErrors:any = {}; 
-    if (!formData.name) newErrors.name = 'Name is required'
-    if (!formData.ticker) newErrors.ticker = 'Ticker is required'
-    if (!formData.description) newErrors.description = 'Description is required'
-    if (!formData.image) newErrors.image = 'Image is required'
+  const validateStep = (currentStep: number): boolean => {
+    const newErrors: Errors = {}
+    let isValid = true
+
+    if (currentStep === 1) {
+      if (!formData.name) {
+        newErrors.name = 'Name is required'
+        isValid = false
+      }
+      if (!formData.ticker) {
+        newErrors.ticker = 'Ticker is required'
+        isValid = false
+      }
+    } else if (currentStep === 2) {
+      if (!formData.description) {
+        newErrors.description = 'Description is required'
+        isValid = false
+      }
+      if (!formData.image) {
+        newErrors.image = 'Image is required'
+        isValid = false
+      }
+    }
+
     setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
+    return isValid
   }
 
-  const handleSubmit = (e:any) => {
+  const handleNextStep = () => {
+    if (validateStep(step)) {
+      setStep(prevStep => prevStep + 1)
+    }
+  }
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (validateForm()) {
+    if (validateStep(3)) {
       console.log('Form submitted:', formData)
       // Here you would typically send the data to your backend
       alert('Meme token created successfully!')
@@ -73,14 +114,14 @@ const MemeTokenCreatorComponent = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100 flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="bg-white rounded-lg shadow-xl p-8 max-w-2xl w-full"
       >
-        <h1 className="text-4xl font-bold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+        <h1 className="text-4xl font-bold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-blue-500">
           Create Your Meme Token
         </h1>
         <div className="mb-8 flex justify-between items-center">
@@ -88,7 +129,7 @@ const MemeTokenCreatorComponent = () => {
             <div
               key={i}
               className={`w-1/3 h-2 rounded-full ${
-                i <= step ? 'bg-gradient-to-r from-purple-600 to-pink-600' : 'bg-gray-200'
+                i <= step ? 'bg-gradient-to-r from-violet-400 to-blue-500' : 'bg-gray-200'
               }`}
             />
           ))}
@@ -111,8 +152,8 @@ const MemeTokenCreatorComponent = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="flex-grow"
-                      placeholder="e.g. Moon Rocket"
+                      className="flex-grow text-gray-700"
+                      placeholder="e.g. Moon Rocket" 
                     />
                     <TooltipProvider>
                       <Tooltip>
@@ -121,7 +162,7 @@ const MemeTokenCreatorComponent = () => {
                             type="button"
                             variant="outline"
                             size="icon"
-                            className="ml-2"
+                            className="ml-2 bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100"
                             onClick={generateRandomName}
                           >
                             <RefreshCw className="h-4 w-4" />
@@ -145,7 +186,7 @@ const MemeTokenCreatorComponent = () => {
                       name="ticker"
                       value={formData.ticker}
                       onChange={handleInputChange}
-                      className="flex-grow"
+                      className="flex-grow text-gray-700"
                       placeholder="e.g. MR"
                     />
                     <TooltipProvider>
@@ -155,7 +196,7 @@ const MemeTokenCreatorComponent = () => {
                             type="button"
                             variant="outline"
                             size="icon"
-                            className="ml-2"
+                            className="ml-2 bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100"
                             onClick={generateRandomTicker}
                           >
                             <RefreshCw className="h-4 w-4" />
@@ -184,6 +225,7 @@ const MemeTokenCreatorComponent = () => {
                     Description
                   </label>
                   <Textarea
+                    className='text-gray-700'
                     id="description"
                     name="description"
                     value={formData.description}
@@ -204,7 +246,7 @@ const MemeTokenCreatorComponent = () => {
                       type="file"
                       onChange={handleImageChange}
                       accept="image/*"
-                      className="flex-grow"
+                      className="flex-grow text-gray-700"
                     />
                     {formData.image && (
                       <img src={formData.image} alt="Token preview" className="w-16 h-16 object-cover rounded" />
@@ -215,7 +257,7 @@ const MemeTokenCreatorComponent = () => {
               </div>
             </motion.div>
           )}
-          {step === 3 && validateForm() &&  (
+          {step === 3 && (
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -223,52 +265,20 @@ const MemeTokenCreatorComponent = () => {
             >
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="twitter" className="block text-sm font-medium text-gray-700 mb-1">
-                    Twitter Link (optional)
-                  </label>
-                  <Input
-                    id="twitter"
-                    name="twitter"
-                    value={formData.twitter}
-                    onChange={handleInputChange}
-                    placeholder="https://twitter.com/yourmemetoken"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="telegram" className="block text-sm font-medium text-gray-700 mb-1">
-                    Telegram Link (optional)
-                  </label>
-                  <Input
-                    id="telegram"
-                    name="telegram"
-                    value={formData.telegram}
-                    onChange={handleInputChange}
-                    placeholder="https://t.me/yourmemetoken"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="website" className="block text-sm font-medium text-gray-700 mb-1">
-                    Website (optional)
-                  </label>
-                  <Input
-                    id="website"
-                    name="website"
-                    value={formData.website}
-                    onChange={handleInputChange}
-                    placeholder="https://yourmemetoken.com"
-                  />
+                  <h1 className='mx-auto w-1/2 text-center'>Your token is being created!!</h1>
+                  <p className='mx-auto w-1/2 text-center'>Have a stellar experience</p>
                 </div>
               </div>
             </motion.div>
           )}
           <div className="flex justify-between mt-8">
             {step > 1 && (
-              <Button type="button" onClick={() => setStep(step - 1)} variant="outline">
+              <Button type="button" onClick={() => setStep(prevStep => prevStep - 1)}>
                 <ChevronLeft className="mr-2 h-4 w-4" /> Back
               </Button>
             )}
             {step < 3 ? (
-              <Button type="button" onClick={() => setStep(step + 1)} className="ml-auto">
+              <Button type="button" onClick={handleNextStep} className="ml-auto">
                 Next <ChevronRight className="ml-2 h-4 w-4" />
               </Button>
             ) : (
