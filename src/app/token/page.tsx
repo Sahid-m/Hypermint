@@ -265,8 +265,8 @@ const MemeTokenCreatorComponent: React.FC = () => {
             >
               <div className="space-y-4">
                 <div>
-                  <h1 className='mx-auto w-1/2 text-center'>Your token is being created!!</h1>
-                  <p className='mx-auto w-1/2 text-center'>Have a stellar experience</p>
+                  <h1 className='mx-auto w-1/2 text-center text-gray-700'>Your token is being created!!</h1>
+                  <p className='mx-auto w-1/2 text-center text-gray-700'>Have a stellar experience</p>
                 </div>
               </div>
             </motion.div>
