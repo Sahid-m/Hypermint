@@ -1,68 +1,13 @@
 'use client'
-
 import { useState, useEffect } from 'react'
 import { Menu, X, Search, Plus, Sparkles, Wallet } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 
 export function DashboardComponent() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100">
-      <nav
-        className={`fixed top-0 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 ease-in-out
-                    ${isScrolled ? 'w-11/12 md:w-3/4 mt-2' : 'w-full md:w-3/4'}
-                    h-16 backdrop-blur-md bg-gray-800/80 border border-gray-700/50
-                    rounded-full flex items-center justify-between px-4 md:px-6`}
-      >
-        <Link href="/" className="text-xl md:text-2xl font-bold text-violet-400">
-          HyperMint
-        </Link>
-
-        <div className="hidden md:flex space-x-6">
-          <NavLink href="/">Dashboard</NavLink>
-          <NavLink href="/tokens">Tokens</NavLink>
-          <NavLink href="/marketplace">Marketplace</NavLink>
-          <NavLink href="/profile">Profile</NavLink>
-        </div>
-
-        <button className="hidden md:flex items-center bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-opacity-50">
-          <Wallet className="mr-2" size={18} />
-          Connect Wallet
-        </button>
-
-        <button
-          className="md:hidden focus:outline-none"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
-
-        {isMenuOpen && (
-          <div className="absolute top-16 left-0 right-0 bg-gray-800/95 backdrop-blur-md p-4 rounded-b-3xl">
-            <div className="flex flex-col space-y-4">
-              <NavLink href="/" onClick={() => setIsMenuOpen(false)}>Dashboard</NavLink>
-              <NavLink href="/tokens" onClick={() => setIsMenuOpen(false)}>Tokens</NavLink>
-              <NavLink href="/marketplace" onClick={() => setIsMenuOpen(false)}>Marketplace</NavLink>
-              <NavLink href="/profile" onClick={() => setIsMenuOpen(false)}>Profile</NavLink>
-              <button className="flex items-center justify-center bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-opacity-50">
-                <Wallet className="mr-2" size={18} />
-                Connect Wallet
-              </button>
-            </div>
-          </div>
-        )}
-      </nav>
 
       <main className="pt-24 px-4 md:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto space-y-12">
@@ -71,10 +16,10 @@ export function DashboardComponent() {
           </h1>
 
           <div className="flex justify-center mb-12">
-            <button className="bg-gradient-to-r from-violet-500 to-blue-500 hover:from-violet-600 hover:to-blue-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-opacity-50">
+            <Link href='/token' className="bg-gradient-to-r from-violet-500 to-blue-500 hover:from-violet-600 hover:to-blue-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-opacity-50">
               <Plus className="inline-block mr-2" size={20} />
               Create a new token
-            </button>
+            </Link>
           </div>
 
           <div className="relative mb-12">
@@ -111,10 +56,10 @@ export function DashboardComponent() {
                   <h3 className="text-lg font-semibold mb-2">{token.name} #{token.id}</h3>
                   <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-2 sm:space-y-0">
                     <span className="text-violet-400 font-medium">1000 HYPR</span>
-                    <button className="w-full sm:w-auto bg-gradient-to-r from-violet-500 to-blue-500 hover:from-violet-600 hover:to-blue-600 text-white text-sm font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-opacity-50 flex items-center justify-center">
+                    <Link href='/trade' className="w-full sm:w-auto bg-gradient-to-r from-violet-500 to-blue-500 hover:from-violet-600 hover:to-blue-600 text-white text-sm font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-opacity-50 flex items-center justify-center">
                       <Sparkles className="mr-1" size={16} />
                       Trade
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -126,7 +71,7 @@ export function DashboardComponent() {
   )
 }
 
-function NavLink({ href, children, onClick } ) {
+export function NavLink({ href, children, onClick }:any ) {
   return (
     <Link
       href={href}
