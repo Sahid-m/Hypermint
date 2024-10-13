@@ -6,7 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import Image from "next/image"
-import ProfileIcon from './profile-circle-svgrepo-com.svg'
+import ProfileIcon from './emoji-funny-circle-svgrepo-com.svg'
 
 type Coin = {
   id: string
