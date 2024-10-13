@@ -1,6 +1,6 @@
 # Hypermint: The Ultimate Meme Coin Platform on Stellar
 
-![Hypermint Logo](link-to-your-logo.png)
+![Hypermint Logo](![logo-no-background](https://github.com/user-attachments/assets/ba03712c-c216-4ab2-8174-2d0bb4b99d2c))
 
 Hypermint is a revolutionary web platform that empowers users to create, trade, and discuss meme coins on the Stellar blockchain. It's where creativity meets cryptocurrency, allowing anyone to participate in the exciting world of meme-based digital assets.
 
